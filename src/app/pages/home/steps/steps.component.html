@@ -7,8 +7,8 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-12">
       <a [routerLink]="[(isLogin$ | async) ? '/personal' : '/user/register']">
         <div class="boxSteps">
           <div class="iconR">
@@ -25,12 +25,12 @@
         </div>
       </a>
     </div>
-
-    <div class="col-sm-4">
+    <div class="col-lg-4 col-md-6 col-sm-12">
       <a routerLink="/user/register">
         <div class="boxSteps">
           <div class="iconR">
-            <svg class="svgi"
+            <svg
+              class="svgi"
               id="_x33_0"
               enable-background="new 0 0 64 64"
               viewBox="0 0 64 64"
@@ -69,12 +69,12 @@
         </div>
       </a>
     </div>
-
-    <div class="col-sm-4">
+    <div class="col-lg-4 col-md-6 col-sm-12">
       <a routerLink="/user/register">
         <div class="boxSteps">
           <div class="iconR">
-            <svg class="svgi"
+            <svg
+              class="svgi"
               id="Capa_1"
               enable-background="new 0 0 512 512"
               viewBox="0 0 512 512"
@@ -114,9 +114,9 @@
           <div>
             <h2>
               <i
-              class="flag-icon mx-1"
-              [class]="'flag-icon-' + order?.nationality?.toLocaleLowerCase()"
-            ></i>
+                class="flag-icon mx-1"
+                [class]="'flag-icon-' + order?.nationality?.toLocaleLowerCase()"
+              ></i>
             </h2>
           </div>
           <div>
@@ -124,28 +124,19 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <p>
-                رقم الهاتف :<span>{{ order?.phoneNumber }}</span>
-              </p>
-            </div>
-            <div class="col">
-              <p>العرق :<span>أصل</span></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <p>
-                الحالة الاجتماعية: <span>{{ order?.socialStatus }}</span>
-              </p>
-            </div>
+          <!-- <div class="row">
             <div class="col">
               <p>
                 الاسم: <span>{{ order?.displayName }}</span>
               </p>
             </div>
-          </div>
+            <div class="col">
+              <p>
+                رقم الهاتف :<span>{{ order?.phoneNumber }}</span>
+              </p>
+            </div>
+          </div> -->
+
           <div class="row">
             <div class="col">
               <p>
@@ -158,11 +149,30 @@
               </p>
             </div>
           </div>
+
           <div class="row">
             <div class="col">
               <p>
+                الحالة الاجتماعية: <span>{{ order?.socialStatus }}</span>
+              </p>
+            </div>
+
+            <div class="col">
+              <p>
+                هل لديك أولاد ؟
+                <span>{{ order?.hasChildren ? "لا" : "نعم" }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- <div class="col">
+              <p>
                 الحالة الصحية: <span>{{ order?.health }}</span>
               </p>
+            </div> -->
+            <div class="col">
+              <p>جنسية الأم: <span>إماراتية</span></p>
             </div>
             <div class="col">
               <p>
@@ -170,6 +180,7 @@
               </p>
             </div>
           </div>
+
           <div class="row">
             <div class="col">
               <p>
@@ -182,6 +193,7 @@
               </p>
             </div>
           </div>
+
           <div class="row">
             <div class="col">
               <p>
@@ -194,18 +206,20 @@
               </p>
             </div>
           </div>
+
           <div class="row">
             <div class="col">
               <p>
                 الوظيفة: <span> {{ order?.job }}</span>
               </p>
             </div>
-            <div class="col">
+            <!-- <div class="col">
               <p>
                 الصحة:<span>{{ order?.health }}</span>
               </p>
-            </div>
+            </div> -->
           </div>
+
           <div class="row">
             <div class="col">
               <p>
@@ -213,16 +227,18 @@
                 <span> {{ order?.more ? "لا" : "نعم" }}</span>
               </p>
             </div>
+
+            <!-- <div class="col">
+              <p>العرق :<span>أصل</span></p>
+            </div> -->
           </div>
+
           <div class="row">
-            <div class="col">
+            <div class="col-12-10">
               <p>
                 المواصفات المطلوبة :
                 <span>{{ order?.specification }}</span>
               </p>
-            </div>
-            <div>
-              <p>الكود: <span> A899</span></p>
             </div>
           </div>
         </div>

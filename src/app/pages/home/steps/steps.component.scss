@@ -1,116 +1,229 @@
-
 @import "../../../../assets/__variables";
 
-a{text-decoration:none;color:black }
-body{background: #fff !important;}
-.titleSteps{margin-top: 100px;
-  p{font-size: 22px; position: relative;
-    &:after{width: 290px; height: 2px; background:$lightBlue; position: absolute; content: ''; right: 39%; left: 40%; top:44px;}
-    &:before{width: 60px; height: 2px;  position: absolute; content: ''; right: 48%;  top: 44px; background:#cc8b1e; z-index: 55}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  background: #fff !important;
+}
+.titleSteps {
+  margin-top: 100px;
+  p {
+    font-size: 22px;
+    position: relative;
+    &:after {
+      width: 290px;
+      height: 2px;
+      background: $lightBlue;
+      position: absolute;
+      content: "";
+      right: 39%;
+      left: 40%;
+      top: 44px;
+    }
+    &:before {
+      width: 60px;
+      height: 2px;
+      position: absolute;
+      content: "";
+      right: 48%;
+      top: 44px;
+      background: #cc8b1e;
+      z-index: 55;
+    }
   }
 }
 
-.boxSteps{background: $lightGold; padding: 10px; height: 200px; margin-top: 50px;transition: 0.3s;
+.boxSteps {
+  background: $lightGold;
+  padding: 10px;
+  height: 200px;
+  margin-top: 50px;
+  transition: 0.3s;
 
-  .iconR{width: 70px;   background: white;height: 145px; text-align: center; float: right;  margin-left: 20px;
-    i{font-size: 40px; line-height:142px; color:$primary;}
-    svg{width:65%; fill:$primary;    padding-top: 47px;}
+  .iconR {
+    width: 70px;
+    background: white;
+    height: 145px;
+    text-align: center;
+    float: right;
+    margin-left: 25px;
+    i {
+      font-size: 40px;
+      line-height: 142px;
+      color: $primary;
+    }
+    svg {
+      width: 65%;
+      fill: $primary;
+      padding-top: 47px;
+    }
   }
-  .boxL{
+  .boxL {
     margin: 30px;
 
-    p{color: black; font-size: 16px;}
-    span {font-size: 15px;line-height: 18px;display: block; }
+    p {
+      color: black;
+      font-size: 16px;
+    }
+    span {
+      font-size: 15px;
+      line-height: 18px;
+      display: block;
+    }
   }
-  &:hover{background: $lightBlue;}
+  &:hover {
+    background: $lightBlue;
+  }
 }
-.boxColor{background: $lightBlue;}
+.boxColor {
+  background: $lightBlue;
+}
 
-#memo{margin-top:150px;background-image: url("../../../../assets/pages/memoBG.svg"); height: 382px; position: relative; font-size: 27px; font-weight: bold; margin-bottom: 120px;
-  &:before{position: absolute; left: 0px; top:-110px; content: ''; background-image: url("../../../../assets/pages/memoCornerL.svg"); width: 197px; height: 191px;}
-  &:after{position: absolute; right: 0px; top:-110px; content: ''; background-image: url("../../../../assets/pages/memoR.svg"); width: 581px; height: 598px;}
-  .memoText{position: relative;z-index: 123; top: 120px;
-    button{color: white; padding: 5px 20px 5px 20px; margin-top: 50px;}
+#memo {
+  margin-top: 150px;
+  background-image: url("../../../../assets/pages/memoBG.svg");
+  height: 382px;
+  position: relative;
+  font-size: 27px;
+  font-weight: bold;
+  margin-bottom: 120px;
+  &:before {
+    position: absolute;
+    left: 0px;
+    top: -110px;
+    content: "";
+    background-image: url("../../../../assets/pages/memoCornerL.svg");
+    width: 197px;
+    height: 191px;
+  }
+  &:after {
+    position: absolute;
+    right: 0px;
+    top: -110px;
+    content: "";
+    background-image: url("../../../../assets/pages/memoR.svg");
+    width: 581px;
+    height: 598px;
+  }
+  .memoText {
+    position: relative;
+    z-index: 123;
+    top: 120px;
+    button {
+      color: white;
+      padding: 5px 20px 5px 20px;
+      margin-top: 50px;
+    }
   }
 }
 
-
-#order-sec{
+#order-sec {
   min-height: 650px;
   padding: 20px 0;
   margin: 20px 0;
   background-color: #fff;
-  .order-card{
+  .order-card {
     margin: 0 5px;
-    height: max-content;
+    // height: max-content;
     padding: 15px;
     background-color: #f8f3f1;
     border-radius: 8px;
-    h2{
+    h2 {
       font-size: 16px;
       color: #cc8b1e;
-      img{
+      img {
         padding-left: 7px;
       }
     }
-    &:hover{
+    &:hover {
       background-color: #f5f8f9;
     }
   }
-  .more-btn{
+  .more-btn {
     padding: 15px 0;
     text-align: center;
-      button{
-        color: #fff;
-        background-color: #cc8b1e;
-        border: none;
-        font-size: 16px;
-        border-radius: 5px;
-        padding: 5px 10px;
-      }
-  }
-  p{
-    font-weight: 500;
-    span{
-      font-weight: 400;
+    button {
+      color: #fff;
+      background-color: #cc8b1e;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
   }
-  .row{
+  p {
+    font-weight: 600;
+    span {
+      // font-weight: 400;
+      font-size: 14px;
+    }
+  }
+  .row {
     display: flex;
     flex-direction: row;
   }
 }
-.card-title{
+.card-title {
   display: flex;
   justify-content: space-between;
 }
 @media only screen and (max-width: 800px) {
-  #memo{ font-size: 21px;    padding-bottom: 60px; height: auto;margin-top: 30px;    margin-bottom: 20px;
-    &:before, &:after{display: none;}
-    .memoText {top: 30px; margin-top: 20px;
-      button{margin-top: 20px;}
+  #memo {
+    font-size: 21px;
+    padding-bottom: 60px;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    &:before,
+    &:after {
+      display: none;
+    }
+    .memoText {
+      top: 30px;
+      margin-top: 20px;
+      button {
+        margin-top: 20px;
+      }
     }
   }
-  .titleSteps{
-    p{width: 100%;    &:after{display: none;}}
+  .titleSteps {
+    p {
+      width: 100%;
+      &:after {
+        display: none;
+      }
+    }
     margin-top: 30px;
   }
-    
-  .boxSteps{
-    margin-top: 20px;height: 300px; min-height: max-content;}
-  #order-sec{
-    .row{
+
+  .boxSteps {
+    margin-top: 20px;
+    // height: 300px;
+    min-height: max-content;
+  }
+  #order-sec {
+    .row {
       display: flex;
       flex-direction: column;
     }
   }
-  .order-card{
-    width: 90vw;
+  .order-card {
+    // width: 90vw;
     height: max-content;
   }
-
 }
 
+@media only screen and (max-width: 500px) {
+  .requests {
+    display: block !important;
+  }
+
+  .boxSteps {
+    height: 240px;
+  }
+}
 .requests {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));

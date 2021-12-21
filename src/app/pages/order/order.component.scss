@@ -1,5 +1,5 @@
 #order-sec {
-  min-height: 650px;
+  min-height: 480px;
   padding: 20px 0;
   margin: 20px 0;
   .order-card {
@@ -32,9 +32,11 @@
     }
   }
   p {
-    font-weight: 500;
+    font-weight: 600;
     span {
-      font-weight: 400;
+      // font-weight: 400;
+      font-size: 14px;
+      // font-weight: bold;
     }
   }
   .row {
@@ -56,12 +58,16 @@
       flex-direction: column;
     }
   }
-  .order-card{
-    width: 90vw;
+  .order-card {
+    // width: 90vw;
     min-height: max-content;
   }
 }
-
+@media only screen and (max-width: 500px) {
+  .requests {
+    display: block !important;
+  }
+}
 .requests {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));

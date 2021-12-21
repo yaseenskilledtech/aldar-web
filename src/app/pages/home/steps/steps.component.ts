@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Order } from 'src/app/profile/models/order';
 import { OrderService } from '../../services/order.service';
 
@@ -17,6 +17,7 @@ export class StepsComponent implements OnInit {
 
   ngOnInit(): void {
     this.orders$ = this.ordersService.orders$.pipe(
+      tap((d) => console.log(d)),
       map((orders) => {
         const data = orders;
         return data.map((o) => {
