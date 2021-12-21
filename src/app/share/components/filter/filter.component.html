@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>طبق استعلامك المناسب</h1>
+<div mat-dialog-conten>
+  <div class="alert alert-primary text-center my-4 m-auto" role="alert">
+    يجب أن تكون هذه العمليات على مفتاح واحد فقط
+    <strong style="font-size: large">(<, <=, !=, not-in, >, or >=)</strong>
+  </div>
+  <ng-container *ngFor="let group of controls; let index = index">
+    <form [formGroup]="group" *ngIf="group">
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>اختر مفتاح</mat-label>
+            <mat-select formControlName="key">
+              <mat-option *ngFor="let item of data?.keys" [value]="item.key">
+                {{ item.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="group.get('key')?.errors?.required"
+              >هذا الحقل مطلوب</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>اختر الاستعلام</mat-label>
+            <mat-select formControlName="query">
+              <mat-option *ngFor="let query of queries" [value]="query.value">
+                {{ query.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="group.get('query')?.errors?.required"
+              >هذا الحقل مطلوب</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>القيمة</mat-label>
+            <input matInput formControlName="value" />
+            <mat-error *ngIf="group.get('value')?.errors?.required"
+              >هذا الحقل مطلوب</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <button mat-icon-button color="warn" (click)="deleteField(index)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+
+  <div class="d-flex justify-content-center my-3">
+    <button mat-fab color="primary" (click)="addNewField()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">إلغاء</button>
+  <button
+    [disabled]="formArray.invalid"
+    mat-raised-button
+    color="primary"
+    (click)="submit()"
+    cdkFocusInitial
+  >
+    حفظ التغييرات
+  </button>
+</div>

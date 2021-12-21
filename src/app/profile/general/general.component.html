@@ -1,0 +1,220 @@
+<div class="container">
+  <form [formGroup]="form" [connectForm]="user.user$ | async">
+    <div class="row">
+      <div class="col-sm-4" >
+        <div class="bodyform">
+          <p>اضف صورك (صورة واحدة على الاقل):</p>
+          <div class="row">
+            <ng-container *ngFor="let image of (user.user$ | async )?.images">
+              <div class="col-sm-6 col-6 col-md-4 col-lg-4">
+                <span style="cursor: pointer" (click)="deleteImage(image)">
+                  <span class="fa fa-trash-alt fa-xs" style="color: #95a5a6"></span><span>حذف</span>
+                </span>
+
+                <img
+                  [src]="image"
+                  class="mb-4"
+                  data-bs-toggle="modal"
+                  width="100%"
+                  href="#exampleModalToggle00"
+                  role="button"
+                  (click)="setPhoto(image)"
+                />
+              </div>
+            </ng-container>
+
+            <div class="upload-progress" *ngIf="(percentage$ |async) as  percentage" >
+              <mat-progress-bar class="progress-bar" mode="determinate" [value]="percentage">
+              </mat-progress-bar>
+              {{ percentage / 100  | percent }}
+            </div>
+
+            <div class="col-sm-12 mt-4" >
+
+              <label class="btn btn-outline-primary btn-outline-light">
+                <i class="fas fa-cloud-upload-alt fs-2 text-primary"></i>
+                <input type="file" style="display: none" (change)="uploadImage($event)">
+
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="bodyform">
+          <div class="row">
+            <div class="col-sm-6 col-12">
+              <mat-form-field>
+                <mat-label>الكود</mat-label>
+                <input matInput formControlName="code">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6 col-12">
+              <mat-form-field>
+                <mat-label>اسم الشهرة</mat-label>
+                <input matInput formControlName="nickname">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6 col-12">
+              <mat-form-field>
+                <mat-label> رقم الهويه</mat-label>
+                <input matInput formControlName="idNumber" mask="000-0000-0000000-0"
+                       placeholder="000-0000-0000000-0">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6 col-12">
+              <mat-form-field>
+                <mat-label> البريد الالكتروني</mat-label>
+                <input matInput formControlName="email">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6 col-12">
+              <mat-form-field class="example-full-width">
+                <mat-label>الجنسية</mat-label>
+                <input matInput
+                       aria-label="State"
+                       [matAutocomplete]="auto"
+                       [formControl]="stateCtrl">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let country of filteredStates | async" [value]="country.name"
+                              (onSelectionChange)="onChange($event)">
+                    <span class="flag-icon mx-1" [class]="'flag-icon-'+country.code.toLocaleLowerCase()"></span>
+                    <span>{{country.name}}</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>الإسم الثلاثي</mat-label>
+                <input matInput formControlName="fullName">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label> تاريخ الميلاد</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label> رقم الهاتف </mat-label>
+                <input matInput formControlName="phone">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label> الجنس</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option value="ذكر">ذكر</mat-option>
+                  <mat-option value="أنثى">أنثى</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label> الإمارة</mat-label>
+                <mat-select formControlName="emirate">
+                  <mat-option *ngFor="let emirate of refs.emirates" [value]="emirate">{{ emirate }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-2 col-2 col-md-3 col-lg-2">
+              <a>
+                <i class="fas fa-chevron-right float-start ArrowLEFT"></i>
+              </a>
+            </div>
+
+            <div class="col-sm-10 col-10 col-md-6 col-lg-8">
+              <button
+                type="submit"
+                class="
+                  btn btn-primary
+                  btnLog
+                  btnNext
+                  saveInfo
+                  mx-auto
+                  fs-6
+                  text-white
+                  fw-bold
+                  mt-4
+                  mb-4
+                " (click)="saveUpdate()"
+                [disabled]="user.loading$ | async"
+              >
+                <i class="fa fa-sync fa-spin" *ngIf="user.loading$ | async"></i>
+                حفظ التعديل
+                <!--             <i class="fas fa-arrow-left me-lg-3"></i>-->
+              </button>
+            </div>
+
+            <div class="col-sm-2 col-2 col-md-3 col-lg-2">
+              <a (click)="nextStep(2)" style="cursor: pointer">
+                <i class="fas fa-chevron-left float-end ArrowLEFT text-primary"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="col-sm-12">
+    <!--    <app-map></app-map>-->
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  style="z-index: 99999"
+  id="exampleModalToggle00"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel00"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img [src]="';;'" width="100%"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img [src]="''" width="100%"/>
+      </div>
+    </div>
+  </div>
+</div>

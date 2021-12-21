@@ -1,0 +1,156 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "~@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$primary: #ce9134;
+$aldaarmarriage-primary: mat.define-palette(mat.$orange-palette, 400);
+$aldaarmarriage-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$aldaarmarriage-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$aldaarmarriage-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $aldaarmarriage-primary,
+      accent: $aldaarmarriage-accent,
+      warn: $aldaarmarriage-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($aldaarmarriage-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Tajawal", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Tajawal&display=swap");
+
+@import "~bootstrap/scss/functions";
+
+$lightBlue: #f5f8f9;
+$lightGold: #f8f3f1;
+
+$secondary: #95a5a6;
+$primary: #ce9134;
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap";
+
+@import "~flag-icon-css/sass/flag-icons";
+html,
+body {
+  height: 100%;
+}
+
+.search-bar-main .search {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.search-bar-main .search input {
+  background: #f8f8f8;
+  width: 100%;
+  border: 1px solid #f8f8f8;
+  padding: 10px 40px 10px 20px;
+  color: #000;
+  font-weight: 500;
+  border-radius: 9px;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-bar-main .search input::placeholder {
+  color: #ce9134;
+}
+
+.search-bar-main .search i {
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
+
+.search-bar-main .search input:focus {
+  outline: none;
+  border-color: #ce9134;
+}
+
+.filter-contant {
+  background: #f8f8f8;
+  padding: 7px 20px 2px;
+  border-radius: 9px;
+  position: relative;
+  overflow: hidden;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.filter-contant .icon {
+  position: absolute;
+  background: #f8f8f8;
+  left: 0;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
+
+.filter-contant .icon i {
+  font-size: 16px;
+}
+
+.filter-contant .label {
+  background: #ce9134;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 9px;
+  font-size: 13px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.filter-contant .label i {
+  margin-right: 7px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.8;
+}
+
+.filter-contant .label i:hover {
+  opacity: 1;
+}

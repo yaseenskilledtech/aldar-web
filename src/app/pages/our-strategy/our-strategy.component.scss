@@ -1,0 +1,115 @@
+@import "../../../assets/__variables";
+body {
+  background-color: #fff !important;
+}
+
+.about {
+  padding: 20px;
+  p {
+    font-size: 26px;
+    font-weight: bold;
+    i {
+      color: $primary;
+      font-style: inherit;
+    }
+  }
+}
+#imgsldie {
+  width: 100%;
+  height: 511px;
+  position: relative;
+  background: url("../../../assets/pages/strategy.svg") center;
+  margin-bottom: 50px;
+}
+.boxHow {
+  position: relative;
+  width: 96%;
+  margin-bottom: 40px;
+  background: $lightGold;
+  border-radius: 40px;
+  min-height: 378px;
+  padding: 50px;
+  padding-top: 30px;
+  .cirWhite {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 20px;
+  }
+  p {
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 30px;
+  }
+  span {
+    position: absolute;
+    bottom: 23px;
+    left: 216px;
+    color: #fff;
+    content: "";
+    font-size: 27px;
+    font-weight: bold;
+    z-index: 1;
+  }
+  &:after {
+    border-radius: 20px;
+    width: 100%;
+    height: 329px;
+    position: absolute;
+    content: url("../../../assets/pages/border.svg");
+    top: -12px;
+    right: 15px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .about {
+    padding: 10px;
+  }
+  #imgsldie {
+    height: 123px;
+  }
+
+  .boxHow {
+    margin-bottom: 21px;
+    padding: 30px;
+    padding-top: 20px;
+    min-height: auto;
+    span {
+      display: none;
+    }
+    p {
+      font-size: 19px;
+      font-weight: bold;
+      padding-top: 15px;
+    }
+    &:after {
+      display: none;
+    }
+  }
+}
+@media only screen and (max-width: 1380px) {
+  .boxHow {
+    position: relative;
+    width: 96%;
+    margin-bottom: 40px;
+    background: $lightGold;
+    border-radius: 40px;
+    min-height: 378px;
+    padding: 50px;
+    padding-top: 30px;
+    &:after {
+      visibility: hidden;
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.base-image {
+  width: 100%;
+  max-height: 20rem;
+  object-fit: cover;
+}

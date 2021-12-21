@@ -1,0 +1,233 @@
+<section id="order-sec">
+  <div class="container">
+    <!-- <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>ابحث هنا</mat-label>
+          <input matInput placeholder="البحث" [formControl]="searchCtrl" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <div class="filter-contant">
+          <div class="label">all requests</div>
+
+          <div class="label" *ngFor="let item of filter; let index = index">
+            {{ item.key }} {{ item.query }} {{ item.value }}
+
+            <i (click)="deleteFilterField(index)" class="fas fa-times"></i>
+          </div>
+
+          <button (click)="openDialog()" class="icon border-0">
+            <i class="fas fa-filter"></i>
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="search-bar-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="search">
+              <input
+                type="text"
+                [formControl]="searchCtrl"
+                placeholder="إبحث هنا بوساطة الاسم"
+              />
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="filter-contant">
+              <div class="label">all requests</div>
+
+              <div class="label" *ngFor="let item of filter; let index = index">
+                {{ item.key }} {{ item.query }} {{ item.value }}
+
+                <i (click)="deleteFilterField(index)" class="fas fa-times"></i>
+              </div>
+
+              <button (click)="openDialog()" class="icon border-0">
+                <i class="fas fa-filter"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-1">
+            <div class="float-start">
+              <div class="float-start">
+                <buttonx
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="Example icon-button with a menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </buttonx>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item routerLink="./share-requests">
+                    <mat-icon>share</mat-icon>
+                    <span>مشاركة</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>voicemail</mat-icon>
+                    <span>الخيار الثاني </span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>الخيار الثالث </span>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="requests">
+      <div class="order-card mt-1" *ngFor="let order of orders$ | async">
+        <div class="card-title">
+          <div>
+            <h2>
+              <i
+                class="flag-icon mx-1"
+                [class]="'flag-icon-' + order?.nationality?.toLocaleLowerCase()"
+              ></i>
+            </h2>
+          </div>
+          <div>
+            <i class="far fa-heart"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p>
+                الاسم: <span>{{ order?.displayName }}</span>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                رقم الهاتف :<span>{{ order?.phoneNumber }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                الجنس : <span>{{ order?.gender }}</span>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                تاريخ الميلاد: <span>{{ order?.birthdate | date }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                الحالة الاجتماعية: <span>{{ order?.socialStatus }}</span>
+              </p>
+            </div>
+
+            <div class="col">
+              <p>
+                هل لديك أولاد ؟
+                <span>{{ order?.hasChildren ? "لا" : "نعم" }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                الحالة الصحية: <span>{{ order?.health }}</span>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                الطول:<span>{{ order?.tall }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                لون البشرة : <span>{{ order?.skinColor }}</span>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                الوزن:<span>{{ order?.weight }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                المستوى التعليمي: <span>{{ order?.education }}</span>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                الامارة:<span>{{ order?.emirate }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                الوظيفة: <span> {{ order?.job }}</span>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                الصحة:<span>{{ order?.health }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>
+                هل تقبلي بالتعدد :
+                <span> {{ order?.more ? "لا" : "نعم" }}</span>
+              </p>
+            </div>
+
+            <div class="col">
+              <p>العرق :<span>أصل</span></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12-10">
+              <p>
+                المواصفات المطلوبة :
+                <span>{{ order?.specification }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button
+        mat-raised-button
+        color="primary"
+        class="mt-3"
+        (click)="loadMore()"
+      >
+        إضافة المزيد
+      </button>
+    </div>
+  </div>
+</section>

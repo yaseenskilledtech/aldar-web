@@ -1,0 +1,529 @@
+<div class="container">
+  <form [formGroup]="form" [connectForm]="user.user$ | async">
+    <div class="bodyform">
+      <div class="row">
+        <div class="col-sm-12 col-12">
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">مستوي التعلیم</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-4 col-6 col-md-4 col-lg-2" *ngFor="let edu of refs.educations">
+                    <div class="radio">
+                      <input [id]="edu" name="education" type="radio" [value]="edu" formControlName="education" />
+                      <label [for]="edu" class="radio-label">{{ edu }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">الوظيفة أو العمل</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-4 col-6 col-md-2 col-lg-2" *ngFor="let jobType of refs.jobs">
+                      <div class="radio">
+                        <input [id]="jobType" name="job" type="radio" [value]="jobType" formControlName="job" />
+                        <label [for]="jobType" class="radio-label">{{ jobType }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">الحالة المادية </p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-4 col-6 col-md-2 col-lg-2" *ngFor="let jobType of refs.rich">
+                      <div class="radio">
+                        <input [id]="jobType" name="rich" type="radio" [value]="jobType" formControlName="rich" />
+                        <label [for]="jobType" class="radio-label">{{ jobType }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2">
+                <p class="fw-bold">الحالة الإجتماعية</p>
+              </div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <form>
+                  <div class="row" *ngIf="user.user$ | async as user">
+                    <ng-container *ngFor="let status of refs.SocialStatus.status(user.gender)">
+                      <div
+                        class="col-sm-4 col-6 col-md-2 col-lg-2"
+                        *ngIf="true"
+                      >
+                        <div class="radio">
+                          <input
+                            [id]="status"
+                            name="socialStatus"
+                            type="radio"
+                            [value]="status"
+                            formControlName="socialStatus"
+                          />
+                          <label [for]="status" class="radio-label">{{ status }} </label>
+                        </div>
+                      </div>
+                    </ng-container>
+
+
+                    <div class="col-sm-12 col-12" *ngIf="refs.SocialStatus.acceptChildren(currentStatus)">
+                      <div class="break-out">
+                        <div class="row">
+
+                          <div class="col-sm-3 col-md-4 col-lg-4 col-12">
+                            <div class="break-outNUM">
+                              <p></p>
+                              <mat-slide-toggle color="primary"  formControlName="hasChildren"> هل لديك أطفال ؟</mat-slide-toggle>
+
+                            </div>
+                          </div>
+                          <ng-container *ngIf="hasChildren.value">
+
+                          <div class="col-sm-3 col-md-4 col-lg-4 col-12">
+                            <div class="break-outNUM">
+                              <p>عدد الأولاد</p>
+
+                              <select class="form-control ng-valid ng-dirty ng-touched" formControlName="boyCount">
+                                <option *ngFor="let child of refs.children" [value]="child">{{ child }}</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-2 col-md-4 col-lg-4 col-12">
+                            <div class="break-outNUM">
+                              <p>عدد البنات</p>
+
+                              <select class="form-control" formControlName="girlCount">
+                                <option *ngFor="let child of refs.children" [value]="child">{{ child }}</option>
+                              </select>
+                            </div>
+                          </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyform mt-5">
+      <div class="row">
+        <div class="col-sm-12 col-12">
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">السكن</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-6 col-6 col-md-3 col-lg-3" *ngFor="let hoseAvailable of refs.hoses">
+                      <div class="radio">
+                        <input
+                          [id]="hoseAvailable"
+                          name="hose"
+                          type="radio"
+                          [value]="hoseAvailable"
+                          formControlName="hose"
+                        />
+                        <label [for]="hoseAvailable" class="radio-label">{{ hoseAvailable }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyform mt-5">
+      <div class="row">
+        <div class="col-sm-12 col-12">
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">لون البشرة</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-6 col-6 col-md-3 col-lg-3" *ngFor="let skin of [1,2,3,4,5,6]">
+                    <div class="radio">
+                      <input
+                        [id]="skin + 'skin'"
+                        name="skinColor"
+                        type="radio"
+                        [value]="skin"
+                        formControlName="skinColor"
+                      />
+                      <label [for]="skin + 'skin'" class="radio-label">{{ skin }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">الطول والوزن</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-3 col-6 col-md-3 col-lg-3">
+                      <div class="tall pt-2">
+                        <label class="radio-label fw-bold float-end">الطول</label>
+
+                        <select class="form-control float-end" formControlName="tall">
+                          <option *ngFor="let height of refs.heights" [value]="height">{{ height }}</option>
+                        </select>
+                        <label class="float-end">سم</label>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 col-6 col-md-3 col-lg-3">
+                      <div class="tall pt-2">
+                        <label class="radio-label fw-bold float-end">الوزن</label>
+
+                        <select class="form-control float-end" formControlName="weight">
+                          <option *ngFor="let weight of refs.weights" [value]="weight">{{ weight }}</option>
+                        </select>
+
+                        <label class="float-end">كج</label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform border-0">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">البنية الجسمية</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <ng-container *ngFor="let phys of refs.physiques">
+                    <div class="col-sm-4 col-6 col-md-3 col-lg-3">
+                      <div class="radio">
+                        <input [id]="phys" name="physique" [value]="phys" type="radio" formControlName="physique" />
+                        <label [for]="phys" class="radio-label">{{ phys }}</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyform border-0 mt-5">
+      <div class="row">
+        <div class="col-sm-12 col-12">
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">لون الشعر</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <ng-container *ngFor="let color of refs.hairColors">
+                    <div class="col-sm-6 col-6 col-md-3 col-lg-3">
+                      <div class="radio">
+                        <input
+                          [id]="color + 'color'"
+                          name="hairColor"
+                          [value]="color"
+                          type="radio"
+                          formControlName="hairColor"
+                        />
+                        <label [for]="color + 'color'" class="radio-label">{{ color }}</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">طول الشعر</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-6 col-6 col-md-4 col-lg-3" *ngFor="let long of refs.hairLongs">
+                      <div class="radio">
+                        <input
+                          [id]="long + 'long'"
+                          name="hairLong"
+                          [value]="long"
+                          type="radio"
+                          formControlName="hairLong"
+                        />
+                        <label [for]="long + 'long'" class="radio-label">{{ long }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform border-0">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">نوع الشعر</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-4 col-6 col-md-3 col-lg-3" *ngFor="let type of refs.hairTypes">
+                    <div class="radio">
+                      <input
+                        [id]="type + 'hairType'"
+                        name="hairType"
+                        type="radio"
+                        [value]="type"
+                        formControlName="hairType"
+                      />
+                      <label [for]="type + 'hairType'" class="radio-label">{{ type }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyform mt-5">
+      <div class="row">
+        <div class="col-sm-12 col-12">
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">عدة النظر</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-4 col-6 col-md-3 col-lg-3" *ngFor="let level of refs.eyeLevels">
+                    <div class="radio">
+                      <input
+                        [id]="level + 'level'"
+                        name="eyeLevel"
+                        [value]="level"
+                        type="radio"
+                        formControlName="eyeLevel"
+                      />
+                      <label [for]="level + 'level'" class="radio-label">{{ level }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">لون العيون</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-4 col-6 col-md-3 col-lg-3" *ngFor="let color of refs.eyeColors">
+                    <div class="radio">
+                      <input
+                        [id]="color + 'eyeColor'"
+                        name="eyeColor"
+                        [value]="color"
+                        type="radio"
+                        formControlName="eyeColor"
+                      />
+                      <label [for]="color + 'eyeColor'" class="radio-label">{{ color }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform border-0">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">اللبس العام</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-4 col-6 col-md-3 col-lg-3" *ngFor="let dress of refs.generalDress">
+                    <div class="radio">
+                      <input
+                        [id]="dress + 'dress'"
+                        name="generalDress"
+                        [value]="dress"
+                        type="radio"
+                        formControlName="generalDress"
+                      />
+                      <label [for]="dress + 'dress'" class="radio-label">{{ dress }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyform mt-5">
+      <div class="row">
+        <div class="col-sm-12 col-12">
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">الوضع الصحي</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-12 col-12 col-md-6 col-lg-3" *ngFor="let health of refs.health">
+                    <div class="radio">
+                      <input
+                        [id]="health + 'health'"
+                        name="health"
+                        [value]="health"
+                        type="radio"
+                        formControlName="health"
+                      />
+                      <label [for]="health + 'health'" class="radio-label">{{ health }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">التدخين</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-6 col-6 col-md-3 col-lg-3">
+                    <div class="radio">
+                      <input
+                        id="true"
+                        name="smocking"
+                        [value]="true"
+                        type="radio"
+                        formControlName="smocking"
+                      />
+                      <label  for="true" class="radio-label"> نعم </label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6 col-6 col-md-3 col-lg-3">
+                    <div class="radio">
+                      <input
+                        id="false"
+                        name="smocking"
+                        [value]="false"
+                        type="radio"
+                        formControlName="smocking"
+                      />
+                      <label for="false" class="radio-label"> لا </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowform">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">النشاط الرياضي</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-6 col-6 col-md-3 col-lg-3" *ngFor="let sport of refs.sportActivities">
+                    <div class="radio">
+                      <input
+                        [id]="sport + 'sport'"
+                        name="sportActivity"
+                        [value]="sport"
+                        type="radio"
+                        formControlName="sportActivity"
+                      />
+                      <label [for]="sport + 'sport'" class="radio-label">{{ sport }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="rowform border-0">
+            <div class="row">
+              <div class="col-sm-3 col-12 col-md-2 col-lg-2"><p class="fw-bold">الطابع العائلي</p></div>
+              <div class="col-sm-9 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-6 col-6 col-md-3 col-lg-3" *ngFor="let family of refs.familyCharacter">
+                    <div class="radio">
+                      <input
+                        [id]="family"
+                        name="familyCharacter"
+                        [value]="family"
+                        type="radio"
+                        formControlName="familyCharacter"
+                      />
+                      <label [for]="family" class="radio-label">{{ family }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyform mt-4 mb-4 bg-transparent">
+      <div class="row">
+        <div class="col-sm-4 col-2">
+          <a (click)="nextStep(1)">
+            <i class="fas fa-chevron-right float-start ArrowLEFT text-primary"></i>
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-8">
+          <button
+            (click)="saveChange()"
+            type="submit"
+            [disabled]="user.loading$ | async"
+            class="btn btn-primary btnLog btnNext saveInfo mx-auto fs-6 text-white fw-bold mt-4 mb-4"
+          >
+            <i class="fa fa-sync fa-spin" *ngIf="user.loading$ | async"></i>
+            حفظ التعديل
+            <!--             <i class="fas fa-arrow-left me-lg-3"></i>-->
+          </button>
+        </div>
+
+        <div class="col-sm-4 col-2">
+          <a (click)="nextStep(3)">
+            <i class="fas fa-chevron-left float-end ArrowLEFT text-primary"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,87 @@
+a{
+    text-decoration: none;
+    font-size: 20px;
+}
+p{
+    color: #808080;
+    padding-top: 20px;
+}
+h3 a,h4{
+    color: #000;
+}
+h4{
+    padding-top: 50px ;
+}
+#order-sec{
+    min-height: 650px;
+    padding: 20px 0;
+    margin: 20px 0;
+    .order-card{
+      margin: 0 5px;
+      min-height: 400px;
+      padding: 15px;
+      background-color: #f8f3f1;
+      border-radius: 8px;  
+      h2{
+        font-size: 16px;
+        color: #cc8b1e;
+        img{
+          padding-left: 7px;
+        }
+      }
+      &:hover{
+        background-color: #f5f8f9;
+      }
+    }
+    .more-btn{
+      padding: 15px 0;
+      text-align: center;
+        button{
+          color: #fff;
+          background-color: #cc8b1e;
+          border: none;
+          font-size: 16px;
+          border-radius: 5px;
+          padding: 5px 10px;
+        }
+    }
+    p{
+      font-weight: 500;
+      span{
+        font-weight: 400;
+      }
+    }
+    .row{
+      display: flex;
+      flex-direction: row;
+    }
+}
+.card-title{
+    display: flex;
+    justify-content: space-between;
+    img , video{
+        border-radius: 8px;
+    }
+}
+.pagination li a{
+  border: none ;
+}
+@media only screen and (max-width: 800px) {
+    #order-sec{
+        .row{
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+        }
+    }
+}
+
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.img-fluid{
+  width: 100%;
+  object-fit: cover;
+}

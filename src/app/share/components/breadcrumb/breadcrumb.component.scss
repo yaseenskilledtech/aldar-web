@@ -1,0 +1,8 @@
+@import "../../../../assets/__variables/index";
+body{background-color: #fff !important; }
+a{text-decoration: none;}
+#breadc{background-image: url("../../../../assets/pages/breadcrumb.svg"); height: 107px; font-weight: bold;    background-size: cover;    background-position: top;
+  .breadcrumb-item + .breadcrumb-item::before{float: right; content: "\2190"; color: $darkSea; margin-top: -4px; font-size: 24px;}
+  .breadcrumb-item{padding-top: 40px; a{color:$darkSea;}}
+  .breadcrumb-item.active{color: white;}
+}

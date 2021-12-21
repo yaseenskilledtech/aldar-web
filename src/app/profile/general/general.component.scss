@@ -1,0 +1,65 @@
+
+
+ @import "../../../assets/__variables";
+
+
+::placeholder{font-size: 16px;}
+
+.bodyform{margin-top: 60px; background: #fff; border-radius: 5px;padding: 20px;
+
+
+  .rowform{ line-height: 65px; position: relative;
+
+    p{line-height: 20px; margin-top: 18px;}
+    input, button, select{border-radius: 25px; border: 2px solid $secondary; background: $grayblue; line-height: 30px;    text-align: right;}
+    select{margin-top: 17px;
+      option{background-color:$grayblue}
+    }
+  }
+
+
+  .btnNext{border-radius: 50px; line-height: 40px;}
+}
+
+.ArrowLEFT{    color: #cad5d6;
+  font-size: 32px;
+  margin-top: 35px;}
+.saveInfo{display: block; width: 50%;}
+
+
+
+@media screen and (max-width: 992px) {
+  .bodyform{margin-top: 20px;
+    p{margin-bottom: 0px !important;}
+    .rowform{line-height: 15px; margin-bottom: 30px;}
+  }
+
+  .saveInfo {width: 100%;}
+
+
+}
+
+.downloadImage{
+  display: block;
+  padding: 10px 40px 10px 40px;
+  text-align: center;
+
+  line-height: 20px;
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  width: 100%;
+  border:3px solid $fill;
+  color: $fill;
+  i{color: $fill;font-size: 78px}
+}
+
+
+ .mat-input-wrapper{
+   width:50px !important;
+ }
+ mat-form-field {
+   width: 100%;
+ }
+

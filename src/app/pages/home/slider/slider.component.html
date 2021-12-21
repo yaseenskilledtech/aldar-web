@@ -1,0 +1,102 @@
+<div class="phone-img">
+  <img src="../../../../assets/pages/slid.jpg" />
+</div>
+<section id="slider">
+  <div class="container">
+    <div class="col-sm-7 mx-auto">
+      <div class="slider text-center">
+        <p><span>الدار</span> لخدمات الزواج</p>
+        <h3 class="lh-sm">
+          السعي لتسهيل ايجاد شريك الحياة المثالي بطريقه عصريه مبتكره مع تأكيد
+          الالتزام والمحافظه على العادات والتقاليد الإسلامية
+        </h3>
+      </div>
+    </div>
+    <div class="col-sm-10 mx-auto">
+      <div class="pic">
+        <svg
+          version="1.1"
+          class="ring"
+          id="Layer_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 366 216"
+          xml:space="preserve"
+        >
+          <image
+            style="overflow: visible"
+            width="366"
+            height="216"
+            xlink:href="../../../../assets/pages/ring.svg"
+            transform="matrix(1 0 0 1 -0.17918 -0.05738)"
+          ></image>
+        </svg>
+
+        <div
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              *ngFor="let view of views; let i = index"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              [attr.data-bs-slide-to]="i"
+              [ngClass]="{ active: view?.isActive }"
+              [attr.aria-current]="view?.isActive"
+            ></button>
+          </div>
+
+          <div class="carousel-inner">
+            <ng-container *ngFor="let view of views">
+              <div
+                class="carousel-item"
+                *ngIf="view?.isEnable"
+                [ngClass]="{ active: view?.isActive }"
+              >
+                <img
+                  [src]="view?.mediaUrl"
+                  style="width: 100%;"
+                  *ngIf="!view?.mediaType?.includes('video'); else video"
+                />
+
+                <ng-template #video>
+                  <video
+                    id="video"
+                    controls
+                    autoplay="false"
+                    style="width: 100%"
+                  >
+                    <source [src]="view?.mediaUrl" [type]="view?.mediaType" />
+                  </video>
+                </ng-template>
+              </div>
+            </ng-container>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="shadoww"></div> -->
+</section>

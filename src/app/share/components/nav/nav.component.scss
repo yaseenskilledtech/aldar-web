@@ -1,0 +1,50 @@
+@import "../../../../assets/__variables/index";
+
+$bgh:linear-gradient(30deg, rgba(154,110,35,1) 0%, rgba(214,144,29,1) 46%, rgba(154,110,35,1) 100%);
+$colornav:#171f2f;
+
+header{background: #fff; max: height 117px;
+  button{border-radius: 30px; margin-left: 10px; border: 2px solid #c8881e  !important; background: none; font-size: 14px; padding:7px 20px 7px 20px; margin-top: 30px;    float: left;
+    &:hover, &:focus, &:active{background: $bgh; color:#fff;}
+  }
+  .navbar{margin-top: 20px;}
+}
+.navli{
+  color:$colornav;
+  .navbar-nav a{color:$colornav; font-weight: 600;
+    &:hover{color:$primary }
+  }
+}
+
+.SVGuser{
+  width: 25px;
+}
+
+.active {
+  color: $primary !important;
+  border-bottom: 2px solid $primary;
+}
+
+@media only screen and (max-width: 800px) {
+  header{max-height:inherit;    padding-top: 10px;
+    .navbar{margin-top: 0px;
+      .btbt{margin-top: -12px; padding: 9px;}
+    }
+    .log{margin-top: 0px;    padding: 5px;}
+  }
+}
+
+
+
+@media screen and (min-width: 1024px) and (max-width:1366px) {
+  header{    padding-top: 10px;
+    button{    padding: 7px 5px 7px 5px;    margin-left: 5px; }
+  }
+}
+
+.navbar-nav {
+  a {
+    cursor: pointer;
+  }
+}
+

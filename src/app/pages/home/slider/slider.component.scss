@@ -1,0 +1,156 @@
+@import "../../../../assets/__variables/index";
+
+$colorGold: #99793b;
+$darkBlue: #171f2f;
+
+#slider {
+  background: #f8f3f1;
+  position: relative;
+  padding-top: 100px;
+  .shadoww {
+    content: url("../../../../assets/pages/shadow.svg");
+    margin-top: -250px;
+  }
+}
+.phone-img img {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  display: none;
+}
+#carouselExampleIndicators {
+  width: 850px;
+  position: absolute;
+  right: 105px;
+}
+.slider {
+  p {
+    font-size: 33px;
+    font-weight: bold;
+    color: $darkBlue;
+    padding: 10px;
+    span {
+      color: $colorGold;
+    }
+  }
+  h3 {
+    color: $darkBlue;
+    font-size: 18px;
+  }
+}
+img,
+.viedo {
+  position: relative !important;
+  right: 35px !important;
+  object-fit: cover;
+  top: 30px;
+  max-width: 100% !important;
+  height: 560px;
+}
+.pic {
+  background: url("../../../../assets/pages/fram.svg");
+  height: 621px;
+  z-index: 19999923;
+  position: relative;
+  .ring {
+    width: 366px;
+    height: 216px;
+    position: absolute;
+    left: 110px;
+    bottom: -70px;
+    z-index: 11111;
+  }
+}
+
+.carousel {
+  position: absolute;
+  right: 105px;
+  width: 720px;
+}
+
+.carousel-cell {
+  video {
+    width: auto !important;
+    height: auto !important;
+    margin-top: 29px;
+  }
+}
+.carousel-container {
+  width: 813px !important;
+}
+
+@media only screen and (max-width: 3000px) {
+  .res {
+    height: 562px !important;
+    width: 75.4%;
+    margin-right: 140px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .res {
+    height: 200px !important;
+    width: 74.7%;
+    margin-right: 48px;
+  }
+
+  .carousel-cell {
+    video {
+      margin-top: 10px;
+    }
+  }
+
+  carousel {
+    height: auto !important;
+  }
+  #slider {
+    background: #f8f3f1;
+    position: relative;
+    &:after,
+    &:before,
+    .shadoww {
+      display: none;
+    }
+  }
+
+  .pic {
+    height: auto;
+    .ring {
+      width: 40%;
+      left: 30px;
+    }
+  }
+  .slider {
+    p {
+      font-size: 23px;
+    }
+  }
+  #slider {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
+  }
+  .phone-img img {
+    visibility: visible;
+    height: 400px;
+    display: block;
+    margin-right: 100px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .phone-img img {
+    visibility: visible;
+    width: 98vw;
+    height: 400px;
+
+    display: block;
+    margin-right: -30px;
+  }
+  #slider {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
+  }
+}

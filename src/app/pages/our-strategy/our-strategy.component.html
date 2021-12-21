@@ -1,0 +1,51 @@
+<app-breadcrumb currentPage="إستراتيجيتنا"></app-breadcrumb>
+<ng-container *ngIf="stratigies$ | async as stratigies">
+  <!-- <section id="imgsldie"></section> -->
+
+  <div class="container">
+    <div class="about">
+      <div class="row">
+        <p class="text-center">{{ stratigies[0]?.title }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <img [src]="stratigies[0]?.imageUrl" class="base-image" alt="" />
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div
+        *ngFor="let stratigy of stratigies | slice: 1; let index = index"
+        class="col-sm-6 col-md-6 col-lg-4"
+      >
+        <div class="boxHow">
+          <div class="cirWhite">
+            <svg
+              version="1.1"
+              id="Background__x2B__header__x2B__Footer__x2B__messages__x2B__values__x2B__Vision__x2B__About_us__x2B__uae__x2B__values_xA0_Image_1_"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 60 60"
+              xml:space="preserve"
+            >
+              <image
+                style="overflow: visible"
+                width="60"
+                height="60"
+                id="Background__x2B__header__x2B__Footer__x2B__messages__x2B__values__x2B__Vision__x2B__About_us__x2B__uae__x2B__values_xA0_Image"
+                [attr.xlink:href]="stratigy?.imageUrl"
+              ></image>
+            </svg>
+          </div>
+
+          <p>{{ stratigy?.description }}</p>
+          <span>{{ index + 1 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

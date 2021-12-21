@@ -1,0 +1,109 @@
+.logSkilled{width: 15%;}
+body{font-family: Cairo;}
+.login{
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px #eeeeee;
+  float: right;
+  margin-top: 150px;
+  padding: 25px;
+  position: relative;
+  &:before{
+    width: 244px;
+    height: 243px;
+    content: '';
+    position: absolute;
+    left: -65px;
+    top: -73px;
+    background-image: url('../../../assets/user/cornerT.png');
+    z-index: -1;
+  }
+  &:after{
+    width: 272px;
+    height: 272px;
+    content: '';
+    position: absolute;
+    right: -74px;
+    bottom: -85px;
+    background-image: url('../../../assets/user/cornerB.png');
+    z-index: -1;
+  }
+
+  p{
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+  h3,h4{
+    font-size: 14px; color: #5e5873; font-weight: 300;
+  }
+  h5{font-size: 14px; font-width: 600;}
+
+}
+
+
+.formLogin{
+  label{
+    font-size: 12px; color:#5e5873; width: 100%;
+  }
+}
+
+.forgetpass{ position: relative;
+  p{font-size: 12px; float: right;
+  a{text-underline: none !important;}
+  }
+  i{position: absolute; right: 10px; top: 41px;}
+
+}
+
+.btnLog{width: 100%; height: 40px; border-radius: 5px; border: 0px; font-size: 16px; font-weight: bold;color:#fff;}
+
+.title {
+  width: 100%;
+  text-align: center;
+  position: relative;
+
+  h1 {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    display: inline-block;
+    z-index: 1; font-size: 12px; color: #5e5873;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:42%;
+    height: 1px;
+    background: #ebe9f1;
+    z-index: 0;
+  }
+}
+
+.social{
+  width: 50%; margin:0 auto;
+  li{list-style: none; float: left; padding: 10px; a{font-size: 19px;}}
+
+}
+
+
+
+@media only screen and (max-width: 800px) {
+  .login {    margin-top: 10px;
+    width: 100%;
+    &:before, &:after{display: none;}
+  }
+
+  .logSkilled{
+    width: 85%;
+    height: 88px;
+    margin: 0 auto;
+  }
+  .social{width: 100%; margin: 0 auto;
+    li{    width: 30%;}
+  }
+
+}

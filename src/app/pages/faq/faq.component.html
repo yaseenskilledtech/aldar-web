@@ -1,0 +1,59 @@
+<app-breadcrumb currentPage="التعليمات"></app-breadcrumb>
+<div class="container">
+  <div class="about">
+    <div class="row">
+      <p class="text-center">طرح الأسئلة بشكل متكرر - <i>التعليمات</i></p>
+
+      <ng-container
+        *ngFor="let category of faqService.faq$ | async; let i = index"
+      >
+        <h3 class="fw-bold fs-4 text-decoration-underline mt-4">
+          {{ category?.title }}
+        </h3>
+        <div
+          class="col-sm-12"
+          *ngFor="let question of category.questions; let qi = index"
+        >
+          <div
+            class="accordion accordion-flush mt-0"
+            id="category{{ i }}_question{{ qi }}"
+          >
+            <div class="accordion-item">
+              <h2
+                class="accordion-header"
+                id="flush-heading-category{{ i }}-question{{ qi }}"
+              >
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  [attr.data-bs-target]="
+                    '#flush-collapse-category' + i + '-question' + qi
+                  "
+                  aria-expanded="false"
+                  [attr.aria-controls]="
+                    'flush-collapse-category' + i + '-question' + qi
+                  "
+                >
+                  {{ question?.title }}
+                </button>
+              </h2>
+              <div
+                id="flush-collapse-category{{ i }}-question{{ qi }}"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="
+                  'flush-heading-category' + i + '-question' + qi
+                "
+                [attr.data-bs-parent]="'#category' + i + '_question' + qi"
+              >
+                <div class="accordion-body">
+                  {{ question?.answer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
