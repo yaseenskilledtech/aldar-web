@@ -8,6 +8,7 @@ import {
   map,
   startWith,
   switchMap,
+  tap,
 } from 'rxjs/operators';
 import { Order } from 'src/app/profile/models/order';
 import {
@@ -80,6 +81,7 @@ export class OrderComponent implements OnInit {
     );
 
     this.orders$ = this.ordersService.orders$.pipe(
+      tap((o) => console.log(o)),
       map((orders) => {
         return orders.map((o) => {
           if (o.birthdate?.seconds)
